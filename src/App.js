@@ -13,28 +13,6 @@ class App extends Component {
     tmp: 'tmp value'
   }
 
-  switchName = (newName) => {
-    // console.log('Was clicked!');
-
-    /**
-    START - DON'T DO THIS
-    this.state.people[0].name = 'Oey Lengkap';
-    END - DON'T DO THIS
-     */
-
-     this.setState({
-      people: [
-        {name: newName, age: 28},
-        {name: 'Rudi', age: 26},
-        {name: 'Wijaya', age: 35}
-      ],
-      visible: false
-     });
-    
-    console.log(this.state.tmp);
-    console.log('switchName');
-  }
-
   changeName = (event) => {
      this.setState({
       people: [
@@ -45,6 +23,16 @@ class App extends Component {
      });
 
      console.log('changeName');
+  }
+
+  removePerson = (rowIndex) => {
+    const currentPeople = this.state.people;
+
+    currentPeople.splice(rowIndex, 1);
+
+    this.setState({
+      people: currentPeople
+    });
   }
 
   togglePersonDiv = () => {
@@ -69,13 +57,15 @@ class App extends Component {
       people = (
         <div>
           {
-            this.state.people.map(person => {
+            this.state.people.map( (person, index) => {
               return <Person
                   name={person.name}
                   age={person.age}
+                  remove={() => this.removePerson(index)}
+                  // changeName={this.changeName}
                />
             })
-          };
+          }
         </div>
       );
     }
@@ -85,12 +75,6 @@ class App extends Component {
         <h1>Hi, I am a React App</h1>
         
         <p>This is really working!</p>
-
-        {/* <button
-          style={btnStyle}
-          onClick = { () => this.switchName('Oey Lengkap pake tombol') } >
-            Swicth Names
-        </button> */}
 
         <button
           style={btnStyle}
