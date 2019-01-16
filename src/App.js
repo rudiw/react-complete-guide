@@ -27,7 +27,8 @@ class App extends Component {
         {name: newName, age: 28},
         {name: 'Rudi', age: 26},
         {name: 'Wijaya', age: 35}
-      ]
+      ],
+      visible: false
      });
     
     console.log(this.state.tmp);
@@ -46,6 +47,13 @@ class App extends Component {
      console.log('changeName');
   }
 
+  togglePersonDiv = () => {
+    const currentVisible = this.state.visible
+    this.setState({
+      visible: !currentVisible
+    });
+  }
+
   render() {
     const btnStyle = {
       backgroundColor: 'white',
@@ -54,9 +62,6 @@ class App extends Component {
       padding: '8px',
       cursor: 'pointer'
     }
-
-    
-
 
     return (
       <div className="App">
@@ -76,25 +81,28 @@ class App extends Component {
             Toggle Person Div
         </button>
 
-        <div>
-          <Person
-            name = {this.state.people[0].name}
-            age = {this.state.people[0].age}
-          />
+        { this.state.visible ? 
+          <div>
+            <Person
+              name = {this.state.people[0].name}
+              age = {this.state.people[0].age}
+            />
 
-          <Person
-            name = {this.state.people[1].name}
-            age = {this.state.people[1].age}
-            switchName = {this.switchName.bind(this, 'Oey !!!')}
-            changeName = {this.changeName} >
-              My hobbies: Badminton
-          </Person>
+            <Person
+              name = {this.state.people[1].name}
+              age = {this.state.people[1].age}
+              switchName = {this.switchName.bind(this, 'Oey !!!')}
+              changeName = {this.changeName} >
+                My hobbies: Badminton
+            </Person>
 
-          <Person
-            name = {this.state.people[2].name}
-            age = {this.state.people[2].age}
-          />
-        </div>
+            <Person
+              name = {this.state.people[2].name}
+              age = {this.state.people[2].age}
+            />
+          </div>
+          : null
+        }
         
       </div>
     );
