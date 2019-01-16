@@ -63,6 +63,32 @@ class App extends Component {
       cursor: 'pointer'
     }
 
+    let people = null;
+
+    if (this.state.visible) {
+      people = (
+        <div>
+          <Person
+            name = {this.state.people[0].name}
+            age = {this.state.people[0].age}
+          />
+
+          <Person
+            name = {this.state.people[1].name}
+            age = {this.state.people[1].age}
+            switchName = {this.switchName.bind(this, 'Oey !!!')}
+            changeName = {this.changeName} >
+              My hobbies: Badminton
+          </Person>
+
+          <Person
+            name = {this.state.people[2].name}
+            age = {this.state.people[2].age}
+          />
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>Hi, I am a React App</h1>
@@ -81,28 +107,7 @@ class App extends Component {
             Toggle Person Div
         </button>
 
-        { this.state.visible ? 
-          <div>
-            <Person
-              name = {this.state.people[0].name}
-              age = {this.state.people[0].age}
-            />
-
-            <Person
-              name = {this.state.people[1].name}
-              age = {this.state.people[1].age}
-              switchName = {this.switchName.bind(this, 'Oey !!!')}
-              changeName = {this.changeName} >
-                My hobbies: Badminton
-            </Person>
-
-            <Person
-              name = {this.state.people[2].name}
-              age = {this.state.people[2].age}
-            />
-          </div>
-          : null
-        }
+        {people}
         
       </div>
     );
