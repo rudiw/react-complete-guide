@@ -13,14 +13,21 @@ class App extends Component {
     tmp: 'tmp value'
   }
 
-  changeName = (event) => {
-     this.setState({
-      people: [
-        {id: 'p1', name: 'Oey', age: 28},
-        {id: 'p2', name: event.target.value, age: 26},
-        {id: 'p3', name: 'Wijaya', age: 30}
-      ]
-     });
+  changeName = (event, personId) => {
+    const idxPerson = this.state.people.findIndex(p => {
+      return p.id === personId;
+    });
+
+    //create new js object
+    const personByIdx = {
+      ...this.state.people[idxPerson]}
+    ;
+    personByIdx.name = event.target.value;
+
+    const currentPeople = [...this.state.people];
+    currentPeople[idxPerson] = personByIdx;
+
+    this.setState({people: currentPeople});
 
      console.log('changeName');
   }
@@ -67,7 +74,7 @@ class App extends Component {
                   name={person.name}
                   age={person.age}
                   remove={() => this.removePerson(index)}
-                  // changeName={this.changeName}
+                  changeName={(event) => this.changeName(event, person.id)}
                   key={person.id}
                />
             })
