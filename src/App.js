@@ -26,7 +26,12 @@ class App extends Component {
   }
 
   removePerson = (rowIndex) => {
-    const currentPeople = this.state.people;
+    //1. not copy
+    // const currentPeople = this.state.people;
+    //2. copy first
+    // const currentPeople = this.state.people.slice();
+    //3. put to new variable (spreads out)
+    const currentPeople = [...this.state.people];
 
     currentPeople.splice(rowIndex, 1);
 
