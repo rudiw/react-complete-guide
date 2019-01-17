@@ -6,9 +6,9 @@ class App extends Component {
 
   state = {
     people: [
-      {name: 'Oey', age: 28},
-      {name: 'Rudi', age: 26},
-      {name: 'Wijaya', age: 30}
+      {id: 'p1', name: 'Oey', age: 28},
+      {id: 'p2', name: 'Rudi', age: 26},
+      {id: 'p3', name: 'Wijaya', age: 30}
     ],
     tmp: 'tmp value'
   }
@@ -16,9 +16,9 @@ class App extends Component {
   changeName = (event) => {
      this.setState({
       people: [
-        {name: 'Oey', age: 28},
-        {name: event.target.value, age: 26},
-        {name: 'Wijaya', age: 30}
+        {id: 'p1', name: 'Oey', age: 28},
+        {id: 'p2', name: event.target.value, age: 26},
+        {id: 'p3', name: 'Wijaya', age: 30}
       ]
      });
 
@@ -68,6 +68,7 @@ class App extends Component {
                   age={person.age}
                   remove={() => this.removePerson(index)}
                   // changeName={this.changeName}
+                  key={person.id}
                />
             })
           }
