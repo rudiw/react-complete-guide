@@ -55,16 +55,9 @@ class App extends Component {
   }
 
   render() {
-    const btnStyle = {
-      backgroundColor: 'green',
-      color: 'white',
-      font: 'inherit',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-    }
 
     let people = null;
+    let btnClass = '';
 
     if (this.state.visible) {
       people = (
@@ -83,7 +76,7 @@ class App extends Component {
         </div>
       );
 
-      btnStyle.backgroundColor = 'red';
+      btnClass = cssClasses.Red;
     }
 
     const classes = [];
@@ -101,7 +94,7 @@ class App extends Component {
         <p className={classes.join(' ')}>This is really working!</p>
 
         <button
-          style={btnStyle}
+          className={btnClass}
           onClick = { this.togglePersonDiv } >
             Toggle Person Div
         </button>
