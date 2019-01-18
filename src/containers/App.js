@@ -6,13 +6,26 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
 
-  state = {
-    people: [
-      {id: 'p1', name: 'Oey', age: 28},
-      {id: 'p2', name: 'Rudi', age: 26},
-      {id: 'p3', name: 'Wijaya', age: 30}
-    ],
-    tmp: 'tmp value'
+  constructor(props) {
+    super(props);
+    console.log('[App.js] Inside constructor: ', props);
+    this.state = {
+      people: [
+        {id: 'p1', name: 'Oey', age: 28},
+        {id: 'p2', name: 'Rudi', age: 26},
+        {id: 'p3', name: 'Wijaya', age: 30}
+      ],
+      tmp: 'tmp value',
+      visible: false
+    }
+  }
+
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount');
+  }
+
+  componentDidMount() {
+    console.log('[App.js] Inside componentDidMount()');
   }
 
   changeName = (event, personId) => {
@@ -58,6 +71,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('[App.js] Inside render()');
 
     let people = null;
 
