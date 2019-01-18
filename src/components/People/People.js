@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import Person from './Person/Person';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-class People extends Component {
+class People extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -17,10 +17,13 @@ class People extends Component {
         console.log('[People.js] Inside componentDidMount()');
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[UPDATE People.js] Inside shouldComponentUpdate');
-        return nextProps.people !== this.props.people;
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[UPDATE People.js] Inside shouldComponentUpdate');
+    //     return nextProps.people !== this.props.people
+    //         || nextProps.onRemovePerson !== this.props.onRemovePerson
+    //         || nextProps.onChangeName !== this.props.onChangeName;
+    //     // return true;
+    // }
 
     componentWillUpdate(nextProps, nextState) {
         console.log('[UPDATE People.js] Inside componentWillUpdate');

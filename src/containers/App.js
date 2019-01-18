@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import cssClasses from './App.css';
 import People from '../components/People/People';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 
-class App extends Component {
+class App extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -28,18 +28,21 @@ class App extends Component {
     console.log('[App.js] Inside componentDidMount()');
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    console.log('[UPDATE App.js] Inside shouldComponentUpdate');
-    return true;
-}
+  // for using PureComponent
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   console.log('[UPDATE App.js] Inside shouldComponentUpdate');
+  //   return nextState.people !== this.state.people
+  //     || nextState.visible !== this.state.visible;
+  //   // return true;
+  // }
 
-componentWillUpdate(nextProps, nextState) {
-    console.log('[UPDATE App.js] Inside componentWillUpdate');
-}
+  componentWillUpdate(nextProps, nextState) {
+      console.log('[UPDATE App.js] Inside componentWillUpdate');
+  }
 
-componentDidUpdate() {
-    console.log('[UPDATE App.js] Inside componentDidUpdate');
-}
+  componentDidUpdate() {
+      console.log('[UPDATE App.js] Inside componentDidUpdate');
+  }
 
   changeName = (event, personId) => {
     const idxPerson = this.state.people.findIndex(p => {
@@ -100,6 +103,16 @@ componentDidUpdate() {
 
     return (
       <div className={cssClasses.App}>
+        <button onClick={
+            () => {
+              this.setState({
+                visible: true
+              })
+            }
+          }>
+          Show People
+        </button>
+
         <Cockpit
           appTitle={this.props.title}
           visible={this.state.visible}
