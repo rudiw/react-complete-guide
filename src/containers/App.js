@@ -2,7 +2,9 @@ import React, { PureComponent } from 'react';
 import cssClasses from './App.css';
 import People from '../components/People/People';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+// import WithClass from '../hoc/WithClass';
+import Aux from '../hoc/Auxiliary';
+import withClassV2 from '../hoc/WithClassV2';
 
 
 class App extends PureComponent {
@@ -107,7 +109,8 @@ class App extends PureComponent {
     }
 
     return (
-      <WithClass classes={cssClasses.App}>
+      // <WithClass classes={cssClasses.App}>
+      <Aux>
         <button onClick={
             () => {
               this.setState({
@@ -125,11 +128,12 @@ class App extends PureComponent {
           onTogglePersonDiv={this.togglePersonDiv}
         />
         {people}
-      </WithClass>
+      {/* </WithClass> */}
+      </Aux>
     );
     // return React.createElement('div', {className: 'App'},
       // React.createElement('h1', null, 'I\'m a React App!!!'));
   }
 }
 
-export default App;
+export default withClassV2( App, cssClasses.App );
