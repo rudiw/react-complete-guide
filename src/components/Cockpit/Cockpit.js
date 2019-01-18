@@ -22,17 +22,15 @@ const cockpit = (props) => {
 
     return (
         <Aux>
-            <div>
-                <h1>{props.appTitle}</h1>
-            
-                <p className={classes.join(' ')}>This is really working!</p>
+            <h1>{props.appTitle}</h1>
+        
+            <p className={classes.join(' ')}>This is really working!</p>
 
-                <button
-                className={btnClass}
-                onClick = { props.onTogglePersonDiv } >
-                    Toggle Person Div
-                </button>
-            </div>
+            <button
+            className={btnClass}
+            onClick = { props.onTogglePersonDiv } >
+                Toggle Person Div
+            </button>
         </Aux>
     );
 };
