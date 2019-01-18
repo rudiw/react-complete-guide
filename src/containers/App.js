@@ -44,6 +44,10 @@ class App extends PureComponent {
       console.log('[UPDATE App.js] Inside componentDidUpdate');
   }
 
+  componentWillReceiveProps() {
+    console.log('[UPDATE App.js] Inside componentWillReceiveProps');
+}
+
   changeName = (event, personId) => {
     const idxPerson = this.state.people.findIndex(p => {
       return p.id === personId;

@@ -29,6 +29,10 @@ class People extends PureComponent {
         console.log('[UPDATE People.js] Inside componentWillUpdate');
     }
 
+    componentWillReceiveProps() {
+        console.log('[UPDATE People.js] Inside componentWillReceiveProps');
+    }
+
     componentDidUpdate() {
         console.log('[UPDATE People.js] Inside componentDidUpdate');
     }
