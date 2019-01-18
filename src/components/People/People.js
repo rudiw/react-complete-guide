@@ -17,9 +17,22 @@ class People extends Component {
         console.log('[People.js] Inside componentDidMount()');
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[UPDATE People.js] Inside shouldComponentUpdate');
+        return nextProps.people !== this.props.people;
+    }
+
+    componentWillUpdate(nextProps, nextState) {
+        console.log('[UPDATE People.js] Inside componentWillUpdate');
+    }
+
+    componentDidUpdate() {
+        console.log('[UPDATE People.js] Inside componentDidUpdate');
+    }
+
     render () {
         console.log('[People.js] Inside render()');
-        
+
         return this.props.people.map( (person, index) => {
             return <ErrorBoundary key={person.id}>
                 <Person
