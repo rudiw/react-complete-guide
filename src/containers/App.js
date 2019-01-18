@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import cssClasses from './App.css';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import People from '../components/People/People';
+import Cockpit from '../components/Cockpit/Cockpit';
+
 
 class App extends Component {
 
@@ -59,51 +60,25 @@ class App extends Component {
   render() {
 
     let people = null;
-    let btnClass = '';
 
     if (this.state.visible) {
       people = (
-        <div>
-          {
-            this.state.people.map( (person, index) => {
-              return <ErrorBoundary key={person.id}>
-                  <Person
-                      name={person.name}
-                      age={person.age}
-                      remove={() => this.removePerson(index)}
-                      changeName={(event) => this.changeName(event, person.id)}
-                  />
-                </ErrorBoundary>
-            })
-          }
-        </div>
+        <People 
+          people={this.state.people}
+          onRemovePerson={this.removePerson}
+          onChangeName={this.changeName}
+        />
       );
-
-      btnClass = cssClasses.Red;
-    }
-
-    const classes = [];
-    if (this.state.people.length <= 2) {
-      classes.push(cssClasses.red);
-    }
-    if (this.state.people.length <= 1) {
-      classes.push(cssClasses.bold);
     }
 
     return (
       <div className={cssClasses.App}>
-        <h1>Hi, I am a React App</h1>
-        
-        <p className={classes.join(' ')}>This is really working!</p>
-
-        <button
-          className={btnClass}
-          onClick = { this.togglePersonDiv } >
-            Toggle Person Div
-        </button>
-
+        <Cockpit
+          visible={this.state.visible}
+          people={this.state.people}
+          onTogglePersonDiv={this.togglePersonDiv}
+        />
         {people}
-        
       </div>
     );
     // return React.createElement('div', {className: 'App'},
