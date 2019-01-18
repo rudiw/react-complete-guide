@@ -1,9 +1,11 @@
 import React from 'react';
 import cssClasses from './Cockpit.css';
+import Aux from '../../hoc/Auxiliary';
+
 
 const cockpit = (props) => {
 
-    let btnClass = '';
+    let btnClass = cssClasses.Button;
 
     const classes = [];
 
@@ -15,22 +17,23 @@ const cockpit = (props) => {
     }
 
     if (props.visible) {
-        btnClass = cssClasses.Red;
+        btnClass = [cssClasses.Button, cssClasses.Red].join(' ');
     }
 
     return (
-        <div className={cssClasses.Cockpit}>
-            <h1>{props.appTitle}</h1>
-        
-            <p className={classes.join(' ')}>This is really working!</p>
+        <Aux>
+            <div>
+                <h1>{props.appTitle}</h1>
+            
+                <p className={classes.join(' ')}>This is really working!</p>
 
-            <button
-            className={btnClass}
-            onClick = { props.onTogglePersonDiv } >
-                Toggle Person Div
-            </button>
-        </div>
-        
+                <button
+                className={btnClass}
+                onClick = { props.onTogglePersonDiv } >
+                    Toggle Person Div
+                </button>
+            </div>
+        </Aux>
     );
 };
 
