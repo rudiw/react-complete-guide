@@ -19,7 +19,8 @@ class App extends PureComponent {
         {id: 'p3', name: 'Wijaya', age: 30}
       ],
       tmp: 'tmp value',
-      visible: false
+      visible: false,
+      toggleClicked: 0
     }
   }
 
@@ -49,7 +50,7 @@ class App extends PureComponent {
 
   componentWillReceiveProps() {
     console.log('[UPDATE App.js] Inside componentWillReceiveProps');
-}
+  }
 
   changeName = (event, personId) => {
     const idxPerson = this.state.people.findIndex(p => {
@@ -88,8 +89,11 @@ class App extends PureComponent {
 
   togglePersonDiv = () => {
     const currentVisible = this.state.visible
-    this.setState({
-      visible: !currentVisible
+    this.setState( (prevState, props) => {
+      return {
+        visible: !currentVisible,
+        toggleClicked: prevState.toggleClicked + 1
+      }
     });
   }
 
