@@ -47,6 +47,7 @@ class People extends PureComponent {
                     age={person.age}
                     remove={() => this.props.onRemovePerson(index)}
                     changeName={(event) => this.props.onChangeName(event, person.id)}
+                    position={index}
                 />
               </ErrorBoundary>
         })
