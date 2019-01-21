@@ -53,6 +53,7 @@ class People extends PureComponent {
                     changeName={(event) => this.props.onChangeName(event, person.id)}
                     position={index}
                     ref={this.lastPersonRef}
+                    isAuthenticated={this.props.isAuthenticated}
                 />
               </ErrorBoundary>
         })

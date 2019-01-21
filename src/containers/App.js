@@ -20,7 +20,8 @@ class App extends PureComponent {
       ],
       tmp: 'tmp value',
       visible: false,
-      toggleClicked: 0
+      toggleClicked: 0,
+      authenticated: false,
     }
   }
 
@@ -97,6 +98,12 @@ class App extends PureComponent {
     });
   }
 
+  doLogin = () => {
+    this.setState({
+      authenticated: true
+    });
+  }
+
   render() {
     console.log('[App.js] Inside render()');
 
@@ -108,6 +115,7 @@ class App extends PureComponent {
           people={this.state.people}
           onRemovePerson={this.removePerson}
           onChangeName={this.changeName}
+          isAuthenticated={this.state.authenticated}
         />
       );
     }
@@ -130,6 +138,7 @@ class App extends PureComponent {
           visible={this.state.visible}
           people={this.state.people}
           onTogglePersonDiv={this.togglePersonDiv}
+          login={this.doLogin}
         />
         {people}
       {/* </WithClass> */}
